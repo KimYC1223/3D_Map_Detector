@@ -39,7 +39,6 @@ public class ScanningTerrainHandler : MonoBehaviour
             return;
         }
         pointNum = (int)( Mathf.Floor((Range * 2f)/Density) + 1f);
-        Debug.Log("pointNum is " + pointNum);
         pointVec = new List<List<Vector3>>();
         objectVec = new List<List<GameObject>>();
         for(int i = 0; i < pointNum; i++) {

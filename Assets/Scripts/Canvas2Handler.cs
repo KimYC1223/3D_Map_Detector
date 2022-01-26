@@ -19,6 +19,7 @@ public class Canvas2Handler : MonoBehaviour
     private bool isSpinning = false;
     private Coroutine spinCoroutine = null;
     private float SpinSpeed = 20f;
+
     public void ScannButton() {
         StartCoroutine(spinningScan(isSpinning));
     }
@@ -67,7 +68,12 @@ public class Canvas2Handler : MonoBehaviour
     }
 
     public void NextStep() {
-        Anim.SetTrigger("Canvas3");
+        if(Scanner.EstimatedMesh != null && Scanner_prev.EstimatedMesh != null &&
+           Scanner.Density == Scanner_prev.Density && Scanner.Range == Scanner_prev.Range) {
+            Anim.SetTrigger("Canvas3");
+            Debug.Log(EditableMeshController.Instance == null);
+            EditableMeshController.Instance.Init();
+        }
     }
 
     public void PrevStep() {
